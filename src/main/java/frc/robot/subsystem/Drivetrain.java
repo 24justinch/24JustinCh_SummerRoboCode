@@ -2,6 +2,7 @@ package frc.robot.subsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 import harkerrobolib.wrappers.HSTalon;
@@ -19,6 +20,9 @@ public class Drivetrain extends SubsystemBase{
     private HSTalon rightMaster;
     private HSTalon rightFollower;
     
+    public final int KP;
+    public final int KI;
+    public final int KD;
 
     private Drivetrain() {
 
@@ -31,15 +35,26 @@ public class Drivetrain extends SubsystemBase{
     public void drive( double speed) {
         leftMaster.set(ControlMode.PercentOutput , speed);
         rightMaster.set(ControlMode.PercentOutput, speed);
-
     }
 
+    public void turn( double speed) {
+        leftMaster.set(ControlMode.PercentOutput , speed);
+        rightMaster.set(ControlMode.PercentOutput, -1 * speed);
+    }
+    
+    public int calculateError(int t){
+        
+    }
+    
+    public void talinInit(){
+        //how to reset
+
+    }
     public Drivetrain getInstance() {
         if (drivetrain == null) {
             drivetrain = new Drivetrain();
         }
         return drivetrain;
     }
-    
 }
      

@@ -8,7 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
-
+import frc.robot.subsystem.Drivetrain;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  
+  Drivetrain drivetrain;
 
   /**
    * This function is run when the robot is first started up and should be
