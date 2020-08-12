@@ -6,4 +6,5 @@ public class RobotMap {
    public static final int RIGHT_MASTER_ID = 0;
    public static final int RIGHT_FOLLOWER_ID = 0;
    public static final int LOOP_INDEX=0;
+   public static final int SLOT_INDEX=0;
 }

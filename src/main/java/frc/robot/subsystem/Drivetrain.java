@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 import harkerrobolib.wrappers.HSTalon;
-
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 /**
  * Drivetrain
  */
@@ -18,15 +18,17 @@ public class Drivetrain extends SubsystemBase{
     private HSTalon rightMaster;
     private HSTalon rightFollower;
 
-    public static final double P=0.0;
-    public static final double I=0.0;
-    public static final double D=0.0;
+    public static final double KP=0.0;
+    public static final double KI=0.0;
+    public static final double KD=0.0;
     public static final int SLOT_INDEX=0;
     public static final double allowableError = 0.0;
 
     //true means going forward, false means going backwards
-    boolean leftMasterDir = true;
-    boolean rightMasterDir = true; 
+    public static final boolean LEFT_MASTER_SENSOR_PHASE = true;
+    public static final boolean RIGHT_MASTER_SENSOR_PHASE = true; 
+
+
 
     private Drivetrain() {
         leftFollower = new HSTalon(RobotMap.LEFT_FOLLOWER_ID);
@@ -35,50 +37,41 @@ public class Drivetrain extends SubsystemBase{
         rightMaster = new HSTalon(RobotMap.RIGHT_MASTER_ID);
     }
 
+    
+
     public void configPositionPIDConstants(){
-        leftMaster.config_kP(SLOT_INDEX, P);
-        leftMaster.config_kI(SLOT_INDEX, I);
-        leftMaster.config_kD(SLOT_INDEX, D);
-        rightMaster.config_kP(SLOT_INDEX, P);
-        rightMaster.config_kI(SLOT_INDEX, I);
-        rightMaster.config_kD(SLOT_INDEX, D);
+        leftMaster.config_kP(SLOT_INDEX, KP);
+        leftMaster.config_kI(SLOT_INDEX, KI);
+        leftMaster.config_kD(SLOT_INDEX, KD);
+        rightMaster.config_kP(SLOT_INDEX, KP);
+        rightMaster.config_kI(SLOT_INDEX, KI);
+        rightMaster.config_kD(SLOT_INDEX, KD);
         leftMaster.selectProfileSlot(SLOT_INDEX, RobotMap.LOOP_INDEX);
         rightMaster.selectProfileSlot(SLOT_INDEX, RobotMap.LOOP_INDEX);
-
-rleftMaster.sleconfigSelectedFeedbackSensor()SLOT_INDEX;
-        rightMaster.configSelectedFeedbackSensor(SLOT_INDEX);        
+        leftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotMap.LOOP_INDEX);
+        rightMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotMap.LOOP_INDEX);        
         
     }
 
-
-    public void drive( double speed) { 
-        leftMaster.set(ControlMode.PercentOutput , speed);
-        rightMaster.set(ControlMode.PercentOutput, speed);
-    }
-    public void driveToPosition(){
+    public void setPercentOutput(double speed,double turn){
+        leftMaster.set(ControlMode.PercentOutput , speed+turn);
+        rightMaster.set(ControlMode.PercentOutput, speed-turn);
         
     }
 
-    //if dir is -1 then turn right, else turn left
-    public void turn( double speed, int dir) {
-        leftMaster.set(ControlMode.PercentOutput , -1 * dir * speed);
-        rightMaster.set(ControlMode.PercentOutput, dir * speed);
-    }
-
-    public void setSensorPhase(boolean dir,double speed){
-        leftMasterDir = dir;
-        rightMasterDir = dir;
-        rightMaster.set(ControlMode.PercentOutput, speed);
-        leftMaster.set(ControlMode.PercentOutput,speed);
-    }
+   
 
     public void talonInit() {
+        leftMaster.configFactoryDefault();
+        rightMaster.configFactoryDefault();
+        leftFollower.configFactoryDefault();
+        rightFollower.configFactoryDefault();
         leftFollower.follow(leftMaster);
         rightFollower.follow(rightMaster);
         leftMaster.setInverted(true);
         rightMaster.setInverted(true);
-        leftMaster.setSensorPhase(leftMasterDir);
-        rightMaster.setSensorPhase(rightMasterDir);
+        leftMaster.setSensorPhase(LEFT_MASTER_SENSOR_PHASE);
+        rightMaster.setSensorPhase(RIGHT_MASTER_SENSOR_PHASE);
     }
     
     public static final Drivetrain getInstance() {
@@ -86,5 +79,11 @@ rleftMaster.sleconfigSelectedFeedbackSensor()SLOT_INDEX;
             drivetrain = new Drivetrain();
         }
         return drivetrain;
-    }
-}
+   
+    }  
+ }
+
+ 
+
+ 
+
