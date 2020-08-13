@@ -12,23 +12,29 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 public class Drivetrain extends SubsystemBase{
     
     public static Drivetrain drivetrain;
-    private HSTalon leftMaster;;
-    private HSTalon leftFollower;
+    private static HSTalon leftMaster;
+    private static HSTalon leftFollower;
     
-    private HSTalon rightMaster;
-    private HSTalon rightFollower;
+    private static HSTalon rightMaster;
+    private static HSTalon rightFollower;
 
     public static final double KP=0.0;
     public static final double KI=0.0;
     public static final double KD=0.0;
     public static final int SLOT_INDEX=0;
-    public static final double allowableError = 0.0;
+    public static final int allowableError = 0;
 
     //true means going forward, false means going backwards
     public static final boolean LEFT_MASTER_SENSOR_PHASE = true;
     public static final boolean RIGHT_MASTER_SENSOR_PHASE = true; 
 
+    public static HSTalon getRightMaster(){
+        return rightMaster;
+    }
 
+    public static HSTalon getLeftMaster(){
+        return leftMaster;
+    }
 
     private Drivetrain() {
         leftFollower = new HSTalon(RobotMap.LEFT_FOLLOWER_ID);
@@ -82,6 +88,8 @@ public class Drivetrain extends SubsystemBase{
    
     }  
  }
+
+ 
 
  
 
