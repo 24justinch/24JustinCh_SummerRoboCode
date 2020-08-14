@@ -11,8 +11,8 @@ public class RobotMap {
    public static final int FLOWER_REVERSE=0;
    public static final int EXTENDER_FORWARD=0;
    public static final int EXTENDER_REVERSE=0;
-   public static final int ARM_ID=0;
-   public static final int WHEEL_FORWARD=0;
-   public static final int WHEEL_REVERSE=0;
+   public static final int ARM_ID=10;
+   public static final int INTAKE_SOLENOID_FORWARD=7;
+   public static final int INTAKE_SOLENOID_REVERSE=0;
   
 }

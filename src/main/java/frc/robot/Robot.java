@@ -8,7 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystem.Drivetrain;
+import frc.robot.subsystem.Intake;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -17,15 +19,18 @@ import frc.robot.subsystem.Drivetrain;
  * project.
  */
 public class Robot extends TimedRobot {
-  Drivetrain drivetrain;
-
+  //private Drivetrain drivetrain;
+  private Intake intake;
+  private OI oi;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
-    drivetrain = Drivetrain.getInstance();
+   // drivetrain = Drivetrain.getInstance();
+    intake = Intake.getInstance();
+    oi = OI.getInstance();
   }
 
  
@@ -41,6 +46,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    CommandScheduler.getInstance().run();
+
   }
 
   /**
@@ -63,6 +70,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    CommandScheduler.getInstance().run();
    }
   
 
@@ -80,6 +88,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -94,6 +103,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledPeriodic() {
+    
   }
 
   /**
@@ -108,6 +118,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    
+    CommandScheduler.getInstance().run();
   }
 }

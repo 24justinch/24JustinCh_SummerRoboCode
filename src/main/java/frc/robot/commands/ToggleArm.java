@@ -10,6 +10,6 @@ public class ToggleArm extends InstantCommand{
 
     }
     public void initialize(){
-        Intake.getInstance().getArm().set(Intake.invert(Intake.getInstance().getArm().get()));
+        Intake.getInstance().getSol().set(Intake.getInstance().invert(Intake.getInstance().getSol().get()));
     }
 }

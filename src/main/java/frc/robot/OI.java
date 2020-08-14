@@ -1,6 +1,8 @@
 package frc.robot;
-import frc.robot.commands.ToggleExtender;
-import frc.robot.commands.ToggleFlower;
+import frc.robot.commands.ActivateWheels;
+import frc.robot.commands.ToggleArm;
+//import frc.robot.commands.ToggleExtender;
+//import frc.robot.commands.ToggleFlower;
 import harkerrobolib.wrappers.HSGamepad;
 import harkerrobolib.wrappers.XboxGamepad;
 
@@ -8,8 +10,8 @@ public class OI {
     
     public static HSGamepad operaterGamepad;
     public static HSGamepad driverGamepad;
-    public static final int OPERATOR_PORT=0;
-    public static final int DRIVER_PORT=1;
+    public static final int OPERATOR_PORT=1;
+    public static final int DRIVER_PORT=0;
     private static OI oi;
     private OI(){
         operaterGamepad = new XboxGamepad(OPERATOR_PORT);
@@ -17,8 +19,10 @@ public class OI {
         initJoystickBindings();
     }
     public void initJoystickBindings(){
-        driverGamepad.getButtonA().whenPressed(new ToggleExtender());
-        driverGamepad.getButtonB().whenPressed(new ToggleFlower());
+        //driverGamepad.getButtonA().whenPressed(new ToggleExtender());
+        //driverGamepad.getButtonB().whenPressed(new ToggleFlower());
+        driverGamepad.getButtonX().whilePressed(new ActivateWheels(0.5));
+        driverGamepad.getButtonY().whenPressed(new ToggleArm());
         
     }
     public static OI getInstance(){

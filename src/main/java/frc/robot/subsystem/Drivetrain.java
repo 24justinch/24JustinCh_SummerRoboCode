@@ -24,8 +24,8 @@ public class Drivetrain extends SubsystemBase{
     public static final int allowableError = 0;
 
     //true means going forward, false means going backwards
-    public static final boolean LEFT_MASTER_SENSOR_PHASE = true;
-    public static final boolean RIGHT_MASTER_SENSOR_PHASE = true; 
+    public static final boolean LEFT_MASTER_SENSOR_PHASE = false;
+    public static final boolean RIGHT_MASTER_SENSOR_PHASE = false; 
 
     private Drivetrain() {
         leftFollower = new HSTalon(RobotMap.LEFT_FOLLOWER_ID);
@@ -62,8 +62,8 @@ public class Drivetrain extends SubsystemBase{
         rightFollower.configFactoryDefault();
         leftFollower.follow(leftMaster);
         rightFollower.follow(rightMaster);
-        leftMaster.setInverted(true);
-        rightMaster.setInverted(true);
+        leftMaster.setInverted(false);
+        rightMaster.setInverted(false);
         leftMaster.setSensorPhase(LEFT_MASTER_SENSOR_PHASE);
         rightMaster.setSensorPhase(RIGHT_MASTER_SENSOR_PHASE);
     }
