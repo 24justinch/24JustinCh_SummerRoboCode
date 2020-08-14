@@ -34,7 +34,7 @@ public class Intake extends SubsystemBase{
     }
     public void talonInit() {
         wheel.configFactoryDefault();
-        wheel.setInverted(false);
+        wheel.setInverted(true);
        
     }
 
