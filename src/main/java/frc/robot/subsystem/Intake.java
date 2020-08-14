@@ -1,5 +1,5 @@
 package frc.robot.subsystem;
 
-public class BotPIDController {
+public class Intake {
     
 }

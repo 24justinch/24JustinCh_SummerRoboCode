@@ -7,4 +7,8 @@ public class RobotMap {
    public static final int RIGHT_FOLLOWER_ID = 0;
    public static final int LOOP_INDEX=0;
    public static final int SLOT_INDEX=0;
+   public static final int FLOWER_FORWARD=0;
+   public static final int FLOWER_REVERSE=0;
+   public static final int EXTENDER_FORWARD=0;
+   public static final int EXTENDER_REVERSE=0;
 }
