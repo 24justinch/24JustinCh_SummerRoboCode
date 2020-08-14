@@ -18,7 +18,7 @@ public class ActivateWheels extends IndefiniteCommand{
     public void execute(){
         Intake.getInstance().getWheel().set(ControlMode.PercentOutput,speed);
     }
-    public void end(){
+    public void end(boolean interrupted){
         Intake.getInstance().getWheel().set(ControlMode.Disabled,0);
     }
     
