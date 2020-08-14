@@ -21,7 +21,7 @@ public class OI {
     public void initJoystickBindings(){
         //driverGamepad.getButtonA().whenPressed(new ToggleExtender());
         //driverGamepad.getButtonB().whenPressed(new ToggleFlower());
-        driverGamepad.getButtonX().whilePressed(new ActivateWheels(0.5));
+        driverGamepad.getButtonX().whilePressed(new ActivateWheels(-0.5));
         driverGamepad.getButtonY().whenPressed(new ToggleArm());
         
     }
