@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystem.Drivetrain;
+import frc.robot.subsystem.Drivetrain2;
 import frc.robot.subsystem.Intake;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,7 +20,7 @@ import frc.robot.subsystem.Intake;
  * project.
  */
 public class Robot extends TimedRobot {
-  //private Drivetrain drivetrain;
+  private Drivetrain2 drivetrain;
   private Intake intake;
   private OI oi;
   /**
@@ -28,7 +29,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-   // drivetrain = Drivetrain.getInstance();
+    drivetrain = Drivetrain2.getInstance();
     intake = Intake.getInstance();
     oi = OI.getInstance();
   }
