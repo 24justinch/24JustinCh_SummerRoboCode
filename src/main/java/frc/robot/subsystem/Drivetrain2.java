@@ -1,5 +1,6 @@
 package frc.robot.subsystem;
 
+import edu.wpi.first.wpilibj.Talon;
 import harkerrobolib.wrappers.HSTalon;
 
 public class Drivetrain2 {
@@ -19,7 +20,11 @@ public class Drivetrain2 {
         return drivetrain;
 
     }
-    public static void initMotors(){
+    public void initMotors(){
+        rightHelper.configFactoryDefault();
+        rightMaster.configFactoryDefault();
+        leftHelper.configFactoryDefault();
+        leftMaster.configFactoryDefault();
         
     }
 }
