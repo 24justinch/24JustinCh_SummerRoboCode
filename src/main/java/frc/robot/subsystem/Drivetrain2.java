@@ -4,10 +4,10 @@ import harkerrobolib.wrappers.HSTalon;
 
 public class Drivetrain2 {
     private static Drivetrain2 drivetrain;
-    private static HSTalon rightMaster;
-    private static HSTalon leftMaster;
-    private static HSTalon rightHelper;
-    private static HSTalon leftHelper;
+    private HSTalon rightMaster;
+    private HSTalon leftMaster;
+    private HSTalon rightHelper;
+    private HSTalon leftHelper;
     private Drivetrain2(){
 
 
@@ -20,7 +20,6 @@ public class Drivetrain2 {
 
     }
     public static void initMotors(){
-        rightMaster.confi
         
     }
 }
