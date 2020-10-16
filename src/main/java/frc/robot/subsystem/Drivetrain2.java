@@ -43,17 +43,13 @@ public class Drivetrain2 extends SubsystemBase{
         rightMaster.setInverted(rightInverted);
         leftMaster.setInverted(leftInverted);
         leftMaster.setSensorPhase(leftSensorPhase);
-        rightMaster.setSensorPhase(rightSensorphase);
-        
+        rightMaster.setSensorPhase(rightSensorphase);   
     }
+    
     public void setPercentOutput(double value,double turn){
             leftMaster.set(ControlMode.PercentOutput, value+turn);
             rightMaster.set(ControlMode.PercentOutput, value-turn);
 
-        }
     }
-    
-
-
 
 }
