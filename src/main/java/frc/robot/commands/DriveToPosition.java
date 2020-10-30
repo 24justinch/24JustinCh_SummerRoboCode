@@ -36,6 +36,6 @@ public class DriveToPosition extends CommandBase{
     }
     
 	public boolean isFinished(){
-        return Drivetrain.getInstance().getRightMaster().getClosedLoopError() <= Drivetrain.allowableError && Drivetrain.getInstance().getLeftMaster().getClosedLoopError() <= Drivetrain.allowableError;
+        return Math.abs(Drivetrain.getInstance().getRightMaster().getClosedLoopError()) <= Drivetrain.allowableError && Math.abs(Drivetrain.getInstance().getLeftMaster().getClosedLoopError()) <= Drivetrain.allowableError;
     }
 }
