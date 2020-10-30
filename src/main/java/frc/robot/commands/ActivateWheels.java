@@ -5,9 +5,9 @@ import harkerrobolib.commands.IndefiniteCommand;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import frc.robot.subsystem.Intake;
 
-public class DriveFromPercentOutput extends IndefiniteCommand{
+public class ActivateWheels extends IndefiniteCommand{
     private double speed;
-    public DriveFromPercentOutput(double s){
+    public ActivateWheels(double s){
         addRequirements(Intake.getInstance());
        this.speed= s;
        

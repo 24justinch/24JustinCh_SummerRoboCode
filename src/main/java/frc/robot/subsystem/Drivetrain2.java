@@ -38,10 +38,10 @@ public class Drivetrain2 extends SubsystemBase {
         leftMaster.config_kD(RobotMap.SLOT_INDEX, KD);
         leftMaster.config_kI(RobotMap.SLOT_INDEX, KI);
         leftMaster.config_kP(RobotMap.SLOT_INDEX, KP);
-
+        
         rightMaster.selectProfileSlot(RobotMap.SLOT_INDEX, RobotMap.LOOP_INDEX);// ru sure its loop index
         leftMaster.selectProfileSlot(RobotMap.SLOT_INDEX, RobotMap.LOOP_INDEX); // yes // Alright
-
+        
     }
 
     public void talonInit() {
@@ -57,8 +57,8 @@ public class Drivetrain2 extends SubsystemBase {
         leftMaster.setInverted(LEFT_MASTER_INVERTED);
         rightHelper.setInverted(LEFT_FOLLOWER_INVERTED);
         leftHelper.setInverted(LEFT_FOLLOWER_INVERTED);
-        rightHelper.setSensorPhase(RIGHT_FOLLOWER_INVERTED);
-        
+
+        leftMaster.setSensorPhase(leftSensorPhase);
         rightMaster.setSensorPhase(rightSensorphase);
     }
 

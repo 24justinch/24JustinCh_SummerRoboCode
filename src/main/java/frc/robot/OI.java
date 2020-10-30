@@ -1,10 +1,12 @@
 package frc.robot;
 import frc.robot.commands.ActivateWheels;
 import frc.robot.commands.ToggleArm;
+import frc.robot.commands.DriveWithPercentOutput;
 //import frc.robot.commands.ToggleExtender;
 //import frc.robot.commands.ToggleFlower;
 import harkerrobolib.wrappers.HSGamepad;
 import harkerrobolib.wrappers.XboxGamepad;
+import sun.jvm.hotspot.asm.Operand; // <-- what is this import?
 
 public class OI {
     
@@ -24,6 +26,13 @@ public class OI {
         driverGamepad.getButtonX().whilePressed(new ActivateWheels(-0.5));
         driverGamepad.getButtonY().whenPressed(new ToggleArm());
         
+    }
+    public static HSGamepad getDriver(){
+
+        return driverGamepad;
+    }
+    public static HSGamepad getOperator(){
+        return operaterGamepad;
     }
     public static OI getInstance(){
         if (oi==null){
