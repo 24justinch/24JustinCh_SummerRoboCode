@@ -6,11 +6,10 @@ import frc.robot.commands.DriveWithPercentOutput;
 //import frc.robot.commands.ToggleFlower;
 import harkerrobolib.wrappers.HSGamepad;
 import harkerrobolib.wrappers.XboxGamepad;
-import sun.jvm.hotspot.asm.Operand; // <-- what is this import?
 
 public class OI {
     
-    private HSGamepad operaterGamepad;
+    private  HSGamepad operaterGamepad;//i think these should be static
     private HSGamepad driverGamepad;
     public static final int OPERATOR_PORT=1;
     public static final int DRIVER_PORT=0;
@@ -27,11 +26,11 @@ public class OI {
         driverGamepad.getButtonY().whenPressed(new ToggleArm());
         
     }
-    public static HSGamepad getDriver(){
+    public HSGamepad getDriver(){
 
         return driverGamepad;
     }
-    public static HSGamepad getOperator(){
+    public HSGamepad getOperator(){
         return operaterGamepad;
     }
     public static OI getInstance(){

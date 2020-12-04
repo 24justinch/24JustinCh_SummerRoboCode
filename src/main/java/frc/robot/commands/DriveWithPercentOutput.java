@@ -2,31 +2,27 @@ package frc.robot.commands;
 
 import frc.robot.OI;
 import frc.robot.subsystem.Drivetrain2;
-
+import harkerrobolib.commands.IndefiniteCommand;
     
-public class DriveWithPercentOutput extends IndefiniteCommand{
-    private int percentoutput;
-    private int turnvalue;
+public class DriveWithPercentOutput extends IndefiniteCommand {
+
+    public void initialize(){}
+    
     @Override
     public void execute(){
-        Drivetrain2.getInstance().setPercentOutput(percentoutput, turnvalue);//is this right??? 
+        Drivetrain2.getInstance().setPercentOutput(OI.getInstance().getDriver().getLeftY(),OI.getInstance().getDriver().getLeftX());//is this right??? 
     }
-    public void initialize(){
-        
+   
+    public boolean isFinished(){
+        return false;
     }
-
-    public boolean end(boolean interrupted){
+    public void end(boolean interrupted){
         //set it all to 0
         Drivetrain2.getInstance().setPercentOutput(0, 0);
-
-    }
-    public boolean isFinished(){
-        //how do we know?
     }
     public DriveWithPercentOutput(int percent,int turn){
-        addrequirement(Drivetrain2.getInstance()); 
-        percentoutput=percent;
-        turnvalue=turn;
+        
+        addRequirements(Drivetrain2.getInstance());
 
     }
 }

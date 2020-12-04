@@ -23,7 +23,8 @@ public class Drivetrain2 extends SubsystemBase {
     private static final double KD = 0.0;
     private static final double KI = 0.0;
     private static final double KP = 0.0;
-
+    public static final double allowableError=0.0;
+    
     private Drivetrain2() {
         rightMaster = new HSTalon(RobotMap.RIGHT_MASTER_ID);
         rightHelper = new HSTalon(RobotMap.RIGHT_FOLLOWER_ID);
