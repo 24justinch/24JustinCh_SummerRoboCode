@@ -11,11 +11,14 @@ public class OI {
     
     private  HSGamepad operaterGamepad;//i think these should be static
     private HSGamepad driverGamepad;
-    public static final int OPERATOR_PORT=1;
-    public static final int DRIVER_PORT=0;
+    public static final int OPERATOR_PORT = 1;
+    public static final int DRIVER_PORT = 0;
     private static OI oi;
-    private OI(){
-        operaterGamepad = new XboxGamepad(OPERATOR_PORT);
+    public static final double DEADBAND =0.1;
+   
+     private OI(){
+    
+            operaterGamepad = new XboxGamepad(OPERATOR_PORT);
         driverGamepad = new XboxGamepad(DRIVER_PORT);
         initJoystickBindings();
     }
